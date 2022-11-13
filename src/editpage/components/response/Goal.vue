@@ -84,8 +84,14 @@ export default {
     },
     subGoal: function() {
       if (this.parts.length > 1) {
-        return this.parts[1].trim().replace(
-            /\n/g, '<br>').replace(/<br> {31}/g, '<br>     ');
+        let goalString = this.parts[1].trim();
+        goalString = goalString.replace(/\n/g, '<br>');
+        if (goalString.search(/<br> {31}/g) !== -1) {
+          goalString = goalString.replace(/<br> {31}/g, '<br>         ');
+        } else if (goalString.search(/<br> {2}/g) !== -1) {
+          goalString = goalString.replace(/<br> {2}/g, '<br>         ');
+        }
+        return goalString;
       }
     },
     showHypotheses: function() {
@@ -180,11 +186,11 @@ export default {
   .goal-with-hypotheses {
     margin-top: 0.3em;
     margin-left: 1em;
-    white-space: pre;
+    white-space: break-spaces;
   }
 
   .goal-target {
     margin-top: 0.3em;
-    white-space: pre;
+    white-space: break-spaces;
   }
 </style>
