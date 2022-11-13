@@ -85,7 +85,7 @@ export default {
     subGoal: function() {
       if (this.parts.length > 1) {
         return this.parts[1].trim().replace(
-            /\n/g, '<br>').replace(/<br> {2}/g, '<br>&emsp;&nbsp;');
+            /\n/g, '<br>').replace(/<br> {31}/g, '<br>     ');
       }
     },
     showHypotheses: function() {
@@ -180,9 +180,11 @@ export default {
   .goal-with-hypotheses {
     margin-top: 0.3em;
     margin-left: 1em;
+    white-space: pre;
   }
 
   .goal-target {
     margin-top: 0.3em;
+    white-space: pre;
   }
 </style>
